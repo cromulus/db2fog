@@ -10,6 +10,8 @@ A grandfather style system is used to decide what backups to keep copies of:
 * one backup per day for the past week
 * one backup per week forever
 
+* This fork has a minor change - added PORT configuration for using with XEROUND MYSQL DATABASE provider
+
 Depending on your tolerance for data loss you should be running a backup at
 least once a day, probably more.
 
