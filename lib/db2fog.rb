@@ -103,7 +103,7 @@ class DB2Fog
     def mysql_options
       cmd = ''
       cmd += " -u #{@credentials[:username]} " unless @credentials[:username].nil?
-      cmd += " -p '#{@credentials[:password]}'" unless @credentials[:password].nil?
+      cmd += " -p'#{@credentials[:password]}'" unless @credentials[:password].nil?
       cmd += " -h '#{@credentials[:host]}'"    unless @credentials[:host].nil?
       cmd += " --port '#{@credentials[:port]}'"    unless @credentials[:port].nil?      
       cmd += " --default-character-set=#{@credentials[:encoding]}" unless @credentials[:encoding].nil?
