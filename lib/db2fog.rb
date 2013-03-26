@@ -66,7 +66,15 @@ class DB2Fog
   end
 
   def db_credentials
-    ActiveRecord::Base.connection.instance_eval { @config } # Dodgy!
+    if Object.const_defined?(:ActiveRecord)
+      ActiveRecord::Base.connection.instance_eval { @config } # Dodgy!
+    elsif Object.const_defined?(:DataMapper)
+      DataMapper.repository.adapter.options.inject({}){|m,(k,v)| m[k.to_sym] = v;m }
+    elsif Object.const_defined?(:Sequel)
+      opts = Sequel::DATABASES.first.opts
+      opts[:username] = opts[:user]
+      opts
+    end
   end
 
   def database
